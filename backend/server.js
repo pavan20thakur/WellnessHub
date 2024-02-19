@@ -17,7 +17,7 @@ app.use("/api/v1/auth", authRoute)
 
 //Rest Api
 app.get("/", (req, res) => {
-    res.send("Hello Bitch")
+    res.send("Hello")
 })
 
 //Database Connection and Listening to Port

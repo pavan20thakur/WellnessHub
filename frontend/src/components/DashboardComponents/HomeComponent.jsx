@@ -42,7 +42,6 @@ function HomeComponent() {
 
   return (
     <div>
-
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center">
@@ -68,7 +67,6 @@ function HomeComponent() {
           </div>
         </div>
       </div>
-
 
     </div>
   )

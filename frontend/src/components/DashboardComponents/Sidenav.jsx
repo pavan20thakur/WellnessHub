@@ -6,4 +6,4 @@ function Sidenav() {
   )
 }
 
-export default Sidenav
+export default Sidenav;

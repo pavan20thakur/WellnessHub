@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { useAuth } from "../../context/auth";
+import  {Sidenav , DashboardCommunity, DashboardHome} from "../../components/DashboardComponents";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -14,8 +15,8 @@ const Dashboard = () => {
           Sidenav
         </div>
 
-
         <div className="col-span-8">
+          Side page
           <Outlet />
         </div>
       </div>

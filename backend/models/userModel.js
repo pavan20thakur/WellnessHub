@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 const { ObjectId } = Schema
 
 const userSchema = new mongoose.Schema({
-
     name: {
         type: String,
     },
@@ -14,6 +13,10 @@ const userSchema = new mongoose.Schema({
     },
     picture: {
         type: String
+    },
+    profile:{
+        type: Schema.Types.ObjectId,
+        ref: 'UserProfile', // Reference to the user who authored the reply
     },
     authCode: {
         type: String
@@ -30,6 +33,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 3600
     },
+    
  
 
 }, { timestamps: true })

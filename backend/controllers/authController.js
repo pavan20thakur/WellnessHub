@@ -1,6 +1,8 @@
 const { hashpassword, comparePassword } = require("../helpers/authHelpers");
 const userModel = require("../models/userModel")
-const JWT = require("jsonwebtoken")
+const JWT = require("jsonwebtoken");
+const UserProfile = require("../models/userProfile");
+
 
 const registerController = async (req, res) => {
     try {
@@ -32,7 +34,20 @@ const registerController = async (req, res) => {
         const hashedPassword = await hashpassword(password);
 
         //Create or save user
-        const register = await userModel.create({name, email, phone, address, password:hashedPassword});
+        const newUser = new userModel({name, email, phone, address, password:hashedPassword});
+
+        const userId = register._id;
+
+        const newProfile = new UserProfile({
+            userId : userId,
+            fullname : name,
+        })
+
+        newUser.profile = newProfile._id;
+
+        await newUser.save();
+        await newProfile.save();
+
         res.status(200).json({
             success: true, 
             message:"User sucessfully registered",
@@ -44,7 +59,7 @@ const registerController = async (req, res) => {
     }
 };
 
-const loginController = async(req, res) => {
+const loginController = async (req, res) => {
     try {
         const {email, password} = req.body;
         //validations
@@ -71,9 +86,10 @@ const loginController = async(req, res) => {
         }
 
         //token
-        const token = await JWT.sign({_id: user._id}, process.env.JWT_SECRET, {
+        const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
             expiresIn: "7d"
         });
+        
         res.status(200).send({
             success: true,
             user: {

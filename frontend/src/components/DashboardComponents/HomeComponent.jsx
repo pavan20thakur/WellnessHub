@@ -1,44 +1,53 @@
-import React from 'react'
-import { GiRunningShoe, GiFire, GiWaterBottle } from 'react-icons/gi';
+import React, { useState } from "react";
+import { GiRunningShoe, GiFire, GiWaterBottle } from "react-icons/gi";
+import Stopwatch from "./Stopwatch";
+import MeditationHistory from "./MeditationHistory";
 
-const accessToken = 'YOUR_ACCESS_TOKEN_HERE';
+const accessToken = "YOUR_ACCESS_TOKEN_HERE";
 
 function HomeComponent() {
   const today = new Date();
   const startTimeMillis = today.setHours(0, 0, 0, 0);
   const endTimeMillis = today.setHours(23, 59, 59, 999);
 
+  const [meditationHistory, setMeditationHistory] = useState([]);
+
+  const handleMeditationComplete = (sessionTime) => {
+    setMeditationHistory((prevHistory) => [...prevHistory, sessionTime]);
+  };
   // Endpoint to retrieve step count data
   const stepCountEndpoint = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
 
   // Define the request body
   const requestBody = {
-    "aggregateBy": [{
-      "dataTypeName": "com.google.step_count.delta",
-      "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
-    }],
-    "bucketByTime": { "durationMillis": 86400000 }, // Aggregate by day
-    "startTimeMillis": startTimeMillis.toString(),
-    "endTimeMillis": endTimeMillis.toString()
+    aggregateBy: [
+      {
+        dataTypeName: "com.google.step_count.delta",
+        dataSourceId:
+          "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps",
+      },
+    ],
+    bucketByTime: { durationMillis: 86400000 }, // Aggregate by day
+    startTimeMillis: startTimeMillis.toString(),
+    endTimeMillis: endTimeMillis.toString(),
   };
 
   // Make the request to retrieve step count data
   fetch(stepCountEndpoint, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify(requestBody)
+    body: JSON.stringify(requestBody),
   })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Step count data:', data);
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Step count data:", data);
     })
-    .catch(error => {
-      console.error('Error fetching step count data:', error);
+    .catch((error) => {
+      console.error("Error fetching step count data:", error);
     });
-
 
   return (
     <div>
@@ -68,8 +77,12 @@ function HomeComponent() {
         </div>
       </div>
 
+      <div className="mt-10">
+        <Stopwatch onMeditationComplete={handleMeditationComplete} />
+        <MeditationHistory meditationHistory={meditationHistory} />
+      </div>
     </div>
-  )
+  );
 }
 
 export default HomeComponent;

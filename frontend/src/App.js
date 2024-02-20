@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/user/Dashboard';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
+import EbbAndFlowPage from './pages/games/EbbAndFlowPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
       </Route>
+      <Route path ='/games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
       <Route path='*' element={<PageNotFound />} />
     </Routes>
     </>

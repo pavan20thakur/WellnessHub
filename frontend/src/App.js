@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/user/Dashboard';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
+import GoogleAuthPage from './pages/GoogleAuthPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/privacy' element={<PrivacyPolicyPage/>} />
+      <Route path='/temp' element={<GoogleAuthPage/>} />
       <Route path='/dashboard' element={<Dashboard />} >
         <Route path='home' element={<HomeComponent />}/>
         <Route path='games' element={<GamesComponent />}/>

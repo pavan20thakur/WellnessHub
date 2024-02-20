@@ -56,7 +56,7 @@ function Login() {
   return (
     <>
       <Layout>
-        <div className="flex justify-center h-[100vh] items-center">
+        <div className="flex justify-center h-[80vh] items-center">
           <Card color="transparent" shadow={false}>
             <Typography variant="h4" className="text-center" color="blue-gray">
               Login

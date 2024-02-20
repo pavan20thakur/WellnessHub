@@ -30,7 +30,7 @@ function Sidenav() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Card className="shadow-xl shadow-blue-gray-900/5">
+    <Card className="shadow-xl shadow-blue-gray-900/5 h-[100%] py-1">
       <div className="mb-2 p-4">
         <Typography variant="h5" color="blue-gray" >
           Syrus 2024
@@ -53,7 +53,7 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
-            navigate("home");
+            navigate("games");
           }}
         >
           <ListItemPrefix>
@@ -65,7 +65,7 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
-            navigate("home");
+            navigate("relax");
           }}
         >
           <ListItemPrefix>
@@ -77,7 +77,7 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
-            navigate("home");
+            navigate("fitness");
           }}
         >
           <ListItemPrefix>
@@ -89,7 +89,7 @@ function Sidenav() {
         {/* Here there is a Chip that can be used to mark the unread chats */}
         <ListItem selected={selected === 3} onClick={() => {
           setSelected(3);
-          navigate("chat")
+          navigate("community")
         }}>
           <ListItemPrefix>
             <UsersIcon className="h-5 w-5" />

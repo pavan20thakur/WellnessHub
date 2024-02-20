@@ -14,6 +14,10 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  GameControllerIcon,
+  UsersIcon,
+  TrophyIcon,
+
 } from "@heroicons/react/24/solid";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
@@ -53,7 +57,7 @@ function Sidenav() {
           }}
         >
           <ListItemPrefix>
-            <HomeIcon className="h-5 w-5" />
+            <TrophyIcon className="h-5 w-5" />
           </ListItemPrefix>
           Games
         </ListItem>
@@ -67,7 +71,19 @@ function Sidenav() {
           <ListItemPrefix>
             <HomeIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Community
+          Relax
+        </ListItem>
+        <ListItem
+          selected={selected === 1}
+          onClick={() => {
+            setSelected(1);
+            navigate("home");
+          }}
+        >
+          <ListItemPrefix>
+            <TrophyIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Fitness Challenge
         </ListItem>
 
         {/* Here there is a Chip that can be used to mark the unread chats */}
@@ -76,9 +92,9 @@ function Sidenav() {
           navigate("chat")
         }}>
           <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
+            <UsersIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Chat
+          Community
           <ListItemSuffix>
             <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
           </ListItemSuffix>

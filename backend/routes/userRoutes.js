@@ -2,15 +2,19 @@ const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/userController')
 const cron = require('node-cron')
-const { default: CommunityGroup } = require('../models/Community/communityGroups')
-const { default: UserProfile } = require('../models/userProfile')
+const CommunityGroup = require('../models/Community/communityGroups')
+const UserProfile = require('../models/userProfile')
+const { requireSignIn } = require('../middlewares/authMiddleware')
+
+
+router.use(requireSignIn);
 
 //Weeekly Activity 
 router.get('/weeklyactivity', (req, res, next) => {
     userController.weeklyactivity(req)
         .then(resp => {
             res.send(resp)
-        }) 
+        })
         .catch(err => {
             res.status(500).send(err)
         })
@@ -126,21 +130,43 @@ router.get('/leaderboard', (req, res, next) => {
         })
 })
 
-router.post("/create-community", async (req, res) => { 
+router.get("/community", async (req, res) => {
     const id = req.user._id;
-    const { community_name, desc} = req.body;
-
-    const userprofile = UserProfile.findOne({userId : id});
-
-    if(!user){
+    const userprofile = await UserProfile.findOne({ userId: id });
+    if (!userprofile) {
         res.status(500).send({
-            success : false,
-            message : "user Does not Exists",
+            sucess: false,
+            message: "user not found"
+        });
+    }
+    const community = [];
+    const communityArray = userprofile.community;
+    for (comm of communityArray) {
+        community.push(await CommunityGroup.findOne(comm));
+    }
+
+    res.send({
+        success: true,
+        message: "Found User",
+        community
+    })
+})
+
+router.post("/create-community", async (req, res) => {
+    const id = req.user._id;
+    const { community_name, desc } = req.body;
+
+    const userprofile = await UserProfile.findOne({ userId: id });
+
+    if (!userprofile) {
+        res.status(500).send({
+            success: false,
+            message: "user Does not Exists",
         });
     }
 
     const newCommunity = new CommunityGroup({
-        name : community_name,
+        name: community_name,
         description: desc
     });
 
@@ -148,7 +174,15 @@ router.post("/create-community", async (req, res) => {
     await newCommunity.save();
 
     userprofile.community.push(newCommunity._id);
-    
+    await userprofile.save();
+    res.send({
+        success: true,
+        message: "Community Created",
+        newCommunity
+    })
+
 });
+
+
 
 module.exports = router

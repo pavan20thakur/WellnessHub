@@ -25,4 +25,4 @@ const communityGroupSchema = new Schema({
 
 const CommunityGroup = mongoose.model("CommunityGroup", communityGroupSchema);
 
-module.export = CommunityGroup;
+module.exports = CommunityGroup;

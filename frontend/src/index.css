@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/*** GOOGLE FONT ***/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/*** BOOTSTRAP ICONS ***/
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
 
 
 * {

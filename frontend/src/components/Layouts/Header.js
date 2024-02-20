@@ -1,102 +1,98 @@
+import { Typography } from "@material-tailwind/react";
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { GiShoppingBag } from "react-icons/gi";
-import { useAuth } from "../../context/auth";
-import toast from "react-hot-toast";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-const Header = () => {
-  const [auth, setAuth] = useAuth();
-  const handleLogout = () => {
-    setAuth({
-      ...auth,
-      user: null,
-      token: '',
-    });
-    localStorage.removeItem("auth");
-    toast.success("log-out Successful")
-  }
+export const Header = () => {
+  const navigate = useNavigate();
+
+  const inactiveNavLink =
+    "block py-2 px-3 rounded text-slate-800 hover:text-white md:p-0 text-white hover:text-primary-800";
+  const activeNavLink =
+    "block py-2 px-3 rounded text-white hover:text-slate-800 md:p-0 text-primary-800 hover:text-white";
+
   return (
-    <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              Syrus
-            </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/category" className="nav-link ">
-                 About
-                </NavLink>
-              </li>{
-              (!auth.user)? (<>
-                <li className="nav-item">
-                <NavLink to="/register" className="nav-link">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">
-                  Login
-                </NavLink>
-              </li>
-              </>) :(
-                <>
-                  <li className="nav-item dropdown">
-                    <NavLink
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      {auth?.user?.name}
-                    </NavLink>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <NavLink to="/dashboard" className="dropdown-item">
-                          Dashboard
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={handleLogout}
-                          to="/login"
-                          className="dropdown-item"
-                        >
-                          Logout
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </li>
-                </>
-              )}
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Contact Us
-                </NavLink>
-              </li>
-            </ul>
+    <nav className="bg-primary-800 border-b border-gray-600 bg-gray-900 text-white p-2">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+        <Link
+          to="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse  text-slate-200"
+        >
+          <img src="" className="h-14" alt="Wellness Hub" />
+          <Typography>WELLNESS HUB</Typography>
+        </Link>
+        <div
+          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-user"
+        >
+          <div className="relative mt-3 md:hidden">
+            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg
+                className="w-4 h-4 text-gray-500 text-slate-200"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
           </div>
+          <ul className="flex flex-col font-medium p-0 border-0 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
+                }
+                aria-current="page"
+              >
+                Home
+              </NavLink>
+              
+            </li>
+            <li>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
+                }
+                aria-current="page"
+              >
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
+                }
+                aria-current="page"
+              >
+                Register
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
+                }
+                aria-current="page"
+              >
+                Contact Us
+              </NavLink>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 

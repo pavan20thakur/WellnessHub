@@ -15,8 +15,7 @@ const Dashboard = () => {
           <Sidenav/>
         </div>
 
-        <div className="col-span-8">
-          Side page
+        <div className="col-span-8 shadow-xl shadow-blue-gray-900/5 bg-white px-2 py-1">
           <Outlet />
         </div>
       </div>

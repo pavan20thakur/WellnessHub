@@ -10,23 +10,22 @@ const Questionnaire = ({ onClose }) => {
   const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
 
-  const handleSubmission = async () => {
+  const handleSubmission = () => {
     try {
-      // Make an HTTP POST request to your server to save the questionnaire data
-      const res = await axios.post(
-        "http://localhost:8080/user/submit-questionnaire",
-        {
-          feeling,
-          stressLevel,
+      // Simulate the submission success (you can replace this with actual API calls)
+      const submissionSuccess = true;
+
+      if (submissionSuccess) {
+        toast.success("Questionnaire responses saved successfully");
+
+        // Conditionally redirect the user based on their selected feeling
+        if (feeling === "happy") {
+          navigate("/dashboard/fitness");
+        } else {
+          navigate("/dashboard/relax");
         }
-      );
-      console.log(auth);
-      console.log(res.data);
-      if (res && res.data.success) {
-        toast.success(res.data && res.data.message);
-        navigate("/dashboard/home");
       } else {
-        toast.error(res.data.message);
+        toast.error("Error saving questionnaire responses");
       }
       onClose();
     } catch (error) {
@@ -66,7 +65,7 @@ const Questionnaire = ({ onClose }) => {
         </div>
 
         <button
-          onClick={onClose} //Change the function call when backend is completely implemented
+          onClick={handleSubmission} //Change the function call when backend is completely implemented
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
         >
           Submit

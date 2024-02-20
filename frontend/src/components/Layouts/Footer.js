@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
+    <>
+    <div className="w-full h-[90px]"></div>
     <footer className="fixed bottom-0 left-0 z-20 w-full p-4 border-t shadow md:flex md:items-center md:justify-between md:p-6 bg-gray-900 text-white border-gray-600">
       <span className="text-sm sm:text-center text-slate-200">
         © 2024{" "}
@@ -34,6 +36,7 @@ export const Footer = () => {
         </li>
       </ul>
     </footer>
+    </>
   );
 };
 

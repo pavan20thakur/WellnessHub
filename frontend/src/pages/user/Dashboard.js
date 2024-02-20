@@ -1,24 +1,28 @@
 import React from "react";
-// import UserMenu from "../components/Layouts/UserMenu";
-import Layout from './../../components/Layouts/Layout';
+import { Outlet, useNavigate } from 'react-router-dom';
+
 import { useAuth } from "../../context/auth";
+
 const Dashboard = () => {
-  const [auth] = useAuth();
+  const navigate = useNavigate();
+
   return (
-    <Layout title={"Dashboard - Ecommerce App"}>
-      <div className="container-flui m-3 p-3">
-        <div className="row">
-          <div className="col-md-9">
-            <div className="card w-75 p-3">
-              <h3>{auth?.user?.name}</h3>
-              <h3>{auth?.user?.email}</h3>
-              <h3>{auth?.user?.address}</h3>
-            </div>
-          </div>
+    <>
+      <div className="grid grid-cols-10 h-screen gap-2 bg-gray-200 px-2 py-1">
+        {/* UserSideNav occupies 2/10 of the viewport width */}
+        <div className="col-span-2 ">
+          Sidenav
+        </div>
+
+
+        <div className="col-span-8">
+          <Outlet />
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
 export default Dashboard;
+
+

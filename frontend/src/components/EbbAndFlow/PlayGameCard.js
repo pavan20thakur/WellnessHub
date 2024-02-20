@@ -1,4 +1,4 @@
-const EbbAndFlowCard = () => {
+const PlayGameCard = () => {
   return (
     <div className=" bg-light-green-50">
       <div className=" min-h-screen">
@@ -25,4 +25,4 @@ const EbbAndFlowCard = () => {
   );
 };
 
-export default EbbAndFlowCard;
+export default PlayGameCard;

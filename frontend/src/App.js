@@ -4,6 +4,7 @@ import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/user/Dashboard';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path='/' element={<HomePage />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/privacy' element={<PrivacyPolicyPage/>} />
       <Route path='/dashboard' element={<Dashboard />} >
         <Route path='home' element={<HomeComponent />}/>
         <Route path='games' element={<GamesComponent />}/>

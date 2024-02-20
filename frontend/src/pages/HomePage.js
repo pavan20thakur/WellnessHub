@@ -21,7 +21,7 @@ const HomePage = () => {
           At our website, we understand that mental and physical wellness are not just buzzwords; they're essential components of a fulfilling life. We recognize that in today's fast-paced world, it's easy to neglect our well-being amidst the demands of daily life. That's why we're dedicated to providing you with the resources and support you need to prioritize your mental and physical health. Through our platform, you'll discover a wealth of expert-curated content, from mindfulness exercises to workout routines tailored to your needs. By investing in your wellness journey with us, you're not just investing in a product – you're investing in yourself, your happiness, and your future. Join our community today and take the first step toward a healthier, more balanced life.
           </p>
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <Link to="#">
+            <Link to="/login">
               <Button>
                 Login
               </Button>

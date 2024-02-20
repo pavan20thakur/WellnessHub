@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true
     },
@@ -13,6 +13,17 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true
+    },
+    picture: {
+        type: String
+    },
+
+    profile:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserProfile', // Reference to the user who authored the reply
+    },
+    authCode: {
+        type: String
     },
     waterGoal: {
         type: Number,
@@ -37,7 +48,8 @@ const userSchema = new mongoose.Schema({
 },
 {
     timestamps: true
-})
+}) 
 
-const userdb = mongoose.model("users", userSchema);
-module.exports = userdb;
+module.exports = mongoose.model("User", userSchema)
+
+

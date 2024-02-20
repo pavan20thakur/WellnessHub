@@ -25,7 +25,6 @@ const Dashboard = () => {
         <div className="col-span-2 ">
           <Sidenav />
         </div>
-
         <div className="col-span-8 shadow-xl shadow-blue-gray-900/5 bg-white px-2 py-1">
           <Outlet />
           {showQuestionnaire && <Questionnaire onClose={closeQuestionnaire} />}

@@ -11,10 +11,9 @@ class userController {
 
         try {
         cron.schedule('0 0 * * *', async () => {
-               
+
                 let d = new Date()
                 let day = d.getDay()
-
                 let obj = {
                     0: "Sunday",
                     1: "Monday",
@@ -24,8 +23,6 @@ class userController {
                     5: "Friday",
                     6: "Saturday",
                 }
-
-
                 const users = await userSchema.find()
 
                 if(users){

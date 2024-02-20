@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -25,4 +25,4 @@ const communityGroupSchema = new Schema({
 
 const CommunityGroup = mongoose.model("CommunityGroup", communityGroupSchema);
 
-export default CommunityGroup;
+module.export = CommunityGroup;

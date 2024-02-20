@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import axios from "axios"; // Import axios for making HTTP requests
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 
 const Questionnaire = ({ onClose }) => {
   const [feeling, setFeeling] = useState("");
   const [stressLevel, setStressLevel] = useState("");
   const navigate = useNavigate();
+  const [auth, setAuth] = useAuth();
 
   const handleSubmission = async () => {
     try {
       // Make an HTTP POST request to your server to save the questionnaire data
-      const res = await axios.post("/submit-questionnaire", {
-        feeling,
-        stressLevel,
-      });
-
+      const res = await axios.post(
+        "http://localhost:8080/user/submit-questionnaire",
+        {
+          feeling,
+          stressLevel,
+        }
+      );
+      console.log(auth);
       console.log(res.data);
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -61,7 +66,7 @@ const Questionnaire = ({ onClose }) => {
         </div>
 
         <button
-          onClick={handleSubmission}
+          onClick={onClose} //Change the function call when backend is completely implemented
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
         >
           Submit

@@ -13,7 +13,15 @@ const userProfileSchema = new mongoose.Schema({
     }],
     achievements:[{
         type : String
-    }]
+    }],
+    feeling: {
+        type: String,
+        default: ""
+    },
+    stressLevel: {
+        type: Number,
+        default: 0
+    },
     } ,{
     timestamps: true // Adding the timestamps option
 });

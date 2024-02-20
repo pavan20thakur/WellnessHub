@@ -40,7 +40,32 @@ router.post('/addwater', (req, res, next) => {
         })
 })
 
-//Add exercise 
+//questionnaire
+router.post("/submit-questionnaire", async (req, res) => {
+    try {
+        const id = req.user._id;
+        const { feeling, stressLevel,} = req.body;
+    
+        const user = UserProfile.findOne({userId : id});
+  
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      // Update questionnaire responses
+      user.feeling = req.body.feeling;
+      user.stressLevel = req.body.stressLevel;
+  
+      // Save the updated user document
+      await user.save();
+  
+      return res.status(200).json({ success: true, message: "Questionnaire responses saved successfully" });
+    } catch (error) {
+      console.error("Error submitting questionnaire:", error);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
 router.post('/addexercise', (req, res, next) => {
 
     userController.addexercise(req)

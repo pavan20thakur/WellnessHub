@@ -37,14 +37,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 3600
     },
-    feeling: {
-        type: String,
-        default: ""
-    },
-    stressLevel: {
-        type: Number,
-        default: 0
-    },
 },
 {
     timestamps: true

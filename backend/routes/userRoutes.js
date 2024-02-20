@@ -52,8 +52,6 @@ router.post('/addexercise', (req, res, next) => {
         })
 })
 
-
-
 router.post('/addmeditation', (req, res, next) => {
 
     userController.addmeditaton(req)
@@ -74,10 +72,7 @@ router.post('/addmood', (req, res, next) => {
         .catch(err => {
             res.status(500).send(err)
         })
-
-
 })
-
 
 router.get('/badges', (req, res, next) => {
 
@@ -91,9 +86,6 @@ router.get('/badges', (req, res, next) => {
             res.status(500).send(err)
         })
 })
-
-
-
 
 router.get('/getinfo', (req, res, next) => {
 
@@ -157,21 +149,6 @@ router.post("/create-community", async (req, res) => {
 
     userprofile.community.push(newCommunity._id);
     
-    
-
 });
-
-// router.get('/test',authenticate.authenticate,(req,res,next)=>{
-
-//     userController.test(req)
-
-//     .then(resp=>{
-//         res.send(resp)
-//     })
-
-//     .catch(err=>{
-//         res.status(500).send(err)
-//     })
-// })
 
 module.exports = router

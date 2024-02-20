@@ -1,3 +1,4 @@
+import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -17,7 +18,7 @@ export const Header = () => {
           className="flex items-center space-x-3 rtl:space-x-reverse  text-slate-200"
         >
           <img src="" className="h-14" alt="Wellness Hub" />
-          <span className="sr-only text-slate-200">Wellness Hub</span>
+          <Typography>WELLNESS HUB</Typography>
         </Link>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"

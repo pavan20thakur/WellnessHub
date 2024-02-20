@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
-
+const userRoute = require("./routes/userRoutes")
 const authRoute = require("./routes/authRoute")
 
 //Rest object
@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"))
 app.use("/api/v1/auth", authRoute)
+app.use("/user", userRoute)
 
 //Rest Api
 app.get("/", (req, res) => {

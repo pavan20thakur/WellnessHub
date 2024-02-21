@@ -1,4 +1,3 @@
-
 import {
   Card,
   Typography,
@@ -18,7 +17,7 @@ import {
   UsersIcon,
   TrophyIcon,
   BeakerIcon,
-  CalendarIcon
+  CalendarIcon,
 } from "@heroicons/react/24/solid";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
@@ -33,7 +32,7 @@ function Sidenav() {
   return (
     <Card className="shadow-xl shadow-blue-gray-900/5 h-[100%] py-1">
       <div className="mb-2 p-4">
-        <Typography variant="h5" color="blue-gray" >
+        <Typography variant="h5" color="blue-gray">
           Syrus 2024
         </Typography>
       </div>
@@ -78,6 +77,18 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
+            navigate("session");
+          }}
+        >
+          <ListItemPrefix>
+            <CalendarIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Book a Session
+        </ListItem>
+        <ListItem
+          selected={selected === 1}
+          onClick={() => {
+            setSelected(1);
             navigate("fitness");
           }}
         >
@@ -88,42 +99,59 @@ function Sidenav() {
         </ListItem>
 
         {/* Here there is a Chip that can be used to mark the unread chats */}
-        <ListItem selected={selected === 3} onClick={() => {
-          setSelected(3);
-          navigate("community")
-        }}>
+        <ListItem
+          selected={selected === 3}
+          onClick={() => {
+            setSelected(3);
+            navigate("community");
+          }}
+        >
           <ListItemPrefix>
             <UsersIcon className="h-5 w-5" />
           </ListItemPrefix>
           Community
           <ListItemSuffix>
-            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+            <Chip
+              value="14"
+              size="sm"
+              variant="ghost"
+              color="blue-gray"
+              className="rounded-full"
+            />
           </ListItemSuffix>
         </ListItem>
 
         <hr class="my-4 border-t border-gray-400" />
 
-        <ListItem selected={selected === 4} onClick={() => {
-          setSelected(4)
-          navigate('profile')
-        }}>
+        <ListItem
+          selected={selected === 4}
+          onClick={() => {
+            setSelected(4);
+            navigate("profile");
+          }}
+        >
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />
           </ListItemPrefix>
           Profile
         </ListItem>
-        <ListItem selected={selected === 5} onClick={() => {
-          setSelected(5)
-          navigate('settings')
-        }}>
+        <ListItem
+          selected={selected === 5}
+          onClick={() => {
+            setSelected(5);
+            navigate("settings");
+          }}
+        >
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
           Settings
         </ListItem>
-        <ListItem onClick={() => {
-          navigate("/");
-        }}>
+        <ListItem
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
@@ -131,9 +159,7 @@ function Sidenav() {
         </ListItem>
       </List>
     </Card>
-  )
+  );
 }
 
 export default Sidenav;
-
-

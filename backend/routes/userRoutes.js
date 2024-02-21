@@ -155,10 +155,20 @@ router.get('/leaderboard', (req, res, next) => {
         })
 })
 
+router.get("/search", async (req, res) => {
+    const id = req.user._id;
+    const { search } = req.body;
+
+    //all commnuities
+    const commList = await CommunityGroup.find({});
+
+
+});
+
 router.get("/community", async (req, res) => {
     try {
         const id = req.user._id;
-        
+
         const userprofile = await UserProfile.findOne({ userId: id });
         if (!userprofile) {
             res.status(500).send({

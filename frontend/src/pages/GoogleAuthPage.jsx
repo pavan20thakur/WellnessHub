@@ -1,8 +1,10 @@
 // Login.js
 import React, { useContext, useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
+import { useDynamicTitle } from '../hooks/useDynamicTitle';
 
 const GoogleAuthPage = () => {
+  useDynamicTitle("Wellness Hub | Auth");
   // const { token, login } = useContext(AuthContext);
   const [token, setToken] = useState(null);
 

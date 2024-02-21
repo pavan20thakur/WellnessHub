@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/auth';
 import {useNavigate} from 'react-router-dom';
 import CommunityCard from './CommunityCard';
+import { useDynamicTitle } from '../../hooks/useDynamicTitle';
 
 function CommunityComponent() {
+  useDynamicTitle("Dashboard | Community");
   const [search, setSearch] = useState("");
   const [auth, setAuth] = useAuth();
   const [community, setCommunity] = useState(null);

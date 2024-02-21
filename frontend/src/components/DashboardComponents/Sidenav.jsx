@@ -53,7 +53,7 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
-            navigate("games/ebb-and-flow");
+            navigate("games");
           }}
         >
           <ListItemPrefix>

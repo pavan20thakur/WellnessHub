@@ -7,6 +7,7 @@ import Dashboard from './pages/user/Dashboard';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
 import GoogleAuthPage from './pages/GoogleAuthPage';
+import DailyActivities from './pages/daily-activities/DailyActivities';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
+        <Route path="daily-activities" element={<DailyActivities />} />
       </Route>
       <Route path='*' element={<PageNotFound />} />
     </Routes>

@@ -26,6 +26,7 @@
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3",
+    "react-google-login": "^5.2.2",
     "sass": "^1.71.0",
     "timer-node": "^5.0.7",
     "use-timer": "^2.0.1"

@@ -7,13 +7,8 @@ import {
   Typography,
   Button
 } from "@material-tailwind/react";
-<<<<<<< HEAD
-import { useDynamicTitle } from '../../hooks/useDynamicTitle';
-
-=======
 
 import { useDynamicTitle } from '../../hooks/useDynamicTitle';
->>>>>>> 2c168dbd3c0b87c8a609245b2fd47da064c40dc0
 
 function CommunityComponent() {
   useDynamicTitle("Dashboard | Community");

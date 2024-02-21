@@ -5,7 +5,7 @@ import Login from './pages/auth/Login';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/user/Dashboard';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
+import {CommunityComponent, HomeComponent, GamesComponent,CommunityHomPage, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
 import GoogleAuthPage from './pages/GoogleAuthPage';
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
+        <Route path='community/:id' element={<CommunityHomPage />}/>
       </Route>
       <Route path='*' element={<PageNotFound />} />
     </Routes>

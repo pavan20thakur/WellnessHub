@@ -1,43 +1,103 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/auth';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CommunityCard from './CommunityCard';
+import {
+  Input,
+  Typography,
+  Button
+} from "@material-tailwind/react";
+
 
 function CommunityComponent() {
   const [search, setSearch] = useState("");
+  const [selected, setSelected] = useState(false);
   const [auth, setAuth] = useAuth();
   const [community, setCommunity] = useState(null);
+  const [communityName, setCommunityName] = useState("");
+  const [desc, setDesc] = useState("")
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = auth.token;
-        
-        const response = await fetch("http://localhost:8080/user/community" , {
-          method : "GET", 
-          headers : {
-            "Authorization" : token,
-          } 
+
+        const response = await fetch("http://localhost:8080/user/community", {
+          method: "GET",
+          headers: {
+            "Authorization": token,
+          }
         });
         const data = await response.json();
-        console.log(data.community);
         setCommunity(data.community);
+        console.log(data);
 
       } catch (error) {
-          console.log(error.message);
-          // navigate('/login');
+        console.log(error.message);
       }
     }
 
     fetchData();
   }, [])
 
+  const handleCommunityClick = (id) => {
+      navigate(`${id}`);
+  }
+
+  const handleSearch = async () => {
+    try {
+      const token = auth.token;
+      const searchTerm = search // Define your search term here
+
+      const response = await fetch("http://localhost:8080/user/search", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": token,
+        },
+        body: JSON.stringify({ search: searchTerm })
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  const handleCreate = async () => {
+    try {
+      const token = auth.token; // Assuming you have the auth token
+
+      const response = await fetch("http://localhost:8080/create-community", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": token,
+        },
+        body: JSON.stringify({
+          "community_name": communityName,
+          "desc": desc
+        })
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+
   return (
     <>
-      <div className="h-[10%] p-3">
+      <div className="h-[10%] p-3 flex items-center justify-between">
         <div class="relative flex w-full max-w-[24rem] ">
-          <div class="relative h-10 w-full min-w-[200px]">
+          <div class="relative h-10 w-full min-w-[200px] ">
             <input type="text"
               class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder=" "
@@ -51,16 +111,68 @@ function CommunityComponent() {
           </div>
           <button
             class="!absolute right-1 top-1 select-none rounded bg-blue-gray-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-gray-500/20 transition-all hover:shadow-lg hover:shadow-blue-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none "
-            type="button">
-            Invite
+            type="button"
+            onClick={handleSearch}
+          >
+            Search
           </button>
+
         </div>
+
+        {/* create community details page */}
+        <div
+          className={`${!selected ? "hidden" : "block"} w-[400px] h-[400px] bg-gray-100  absolute right-6 top-16 rounded-lg hover:shadow-lg hover:shadow-blue-gray-500/40`}
+        >
+          <div className='flex p-6 flex-col gap-4'>
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Name
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Name"
+
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 hover:shadow-lg hover:shadow-blue-gray-500/40"
+              onChange={(e) => setCommunityName(e.target.value)}
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Description
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Description"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 hover:shadow-lg hover:shadow-blue-gray-500/40"
+              onChange={(e) => setDesc(e.target.value)}
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+            <Button className="mt-6 hover:shadow-lg hover:shadow-blue-gray-500/40" fullWidth
+              onClick={handleCreate}
+            >
+              Create
+            </Button>
+          </div>
+        </div>
+
+
+
+        <button
+          class="select-none rounded bg-blue-gray-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-gray-500/20 transition-all hover:shadow-lg hover:shadow-blue-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none "
+          type="button"
+          onClick={() => setSelected(!selected)}
+        >
+          Create Community
+        </button>
+
       </div>
       <div className="h-9/10 bg-gray-300 mt-2">
         {
           community && (
-            community.map((item,index)=>(
-              <CommunityCard key={index} community={item}/>
+            community.map((item, index) => (
+              <CommunityCard key={index} community={item} handleCommunityClick={handleCommunityClick} />
             ))
           )
         }

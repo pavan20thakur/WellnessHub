@@ -155,14 +155,29 @@ router.get('/leaderboard', (req, res, next) => {
         })
 })
 
-router.get("/search", async (req, res) => {
-    const id = req.user._id;
-    const { search } = req.body;
+router.post("/search", async (req, res) => {
+    try {
+        const id = req.user._id;
+        let { search } = req.body; // Use req.query for GET requests
 
-    //all commnuities
-    const commList = await CommunityGroup.find({});
+        // Check if search query is provided and is a string
+        if (!search || typeof search !== 'string') {
+            return res.status(400).json({ error: 'Invalid search query' });
+        }
 
+        // Perform case-insensitive search on name and description fields
+        const communities = await CommunityGroup.find({
+            $or: [
+                { name: { $regex: search, $options: 'i' } },
+                { description: { $regex: search, $options: 'i' } }
+            ]
+        });
 
+        res.json({ communities });
+    } catch (error) {
+        console.error('Error searching communities:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 router.get("/community", async (req, res) => {
@@ -198,6 +213,7 @@ router.get("/community", async (req, res) => {
 
 router.post("/create-community", async (req, res) => {
     const id = req.user._id;
+    console.log(req.body);
     const { community_name, desc } = req.body;
 
     const userprofile = await UserProfile.findOne({ userId: id });

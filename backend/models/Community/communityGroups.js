@@ -7,7 +7,7 @@ const communityGroupSchema = new Schema({
         type: String,
         required: true
     },
-    description: String,
+    description: String,    
     admins : [{ 
         type : Schema.Types.ObjectId ,
         ref : 'User'

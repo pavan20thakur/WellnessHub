@@ -8,6 +8,8 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
 import GoogleAuthPage from './pages/GoogleAuthPage';
 import EbbAndFlowPage from './pages/games/EbbAndFlowPage';
+import Session from './pages/session/Session';
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
+        <Route path='session' element={<Session />}/>
         <Route path ='games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
       </Route>
       

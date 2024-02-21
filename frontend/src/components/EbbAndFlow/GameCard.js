@@ -46,7 +46,7 @@ const GameCard = () => {
     };
 
     return (
-        <div className="bg-gray-900 h-lvh">
+        <div className="bg-white h-lvh">
             <div className="overflow-hidden text-center md:pt-20">
                 <GameContainer ref={gameContainerRef} className="relative isolate mx-auto">
                     {isPlaying && (

@@ -24,8 +24,9 @@ function App() {
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
+        <Route path ='games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
       </Route>
-      <Route path ='/games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
+      
       <Route path='*' element={<PageNotFound />} />
     </Routes>
     </>

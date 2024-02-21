@@ -7,4 +7,4 @@ router.post("/register", registerController);
 router.post("/login", loginController)
 router.get("/test", requireSignIn, isAdmin, testController)
 
-module.exports = router
+module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function CommunityHomPage() {
@@ -17,21 +17,30 @@ function CommunityHomPage() {
         setMessage('');
     };
 
+
+
     return (
-        <div className="h-screen flex flex-col">
-            <div className="flex-grow">
-                {id}
+        <div className="h-[100%] flex flex-col">
+            {/* Header Section */}
+            <div className="h-2/10 bg-gray-800 text-white flex items-center justify-center">
+                {id} {/* Display the community name */}
             </div>
 
-            <div className="bg-gray-200 p-4 flex">
-                <input 
+            {/* Message Section */}
+            <div className="flex-grow bg-gray-200 p-4 overflow-y-auto">
+                {/* Your messages content goes here */}
+            </div>
+
+            {/* Message Sending Section */}
+            <div className="h-1/10 bg-gray-200 p-4 flex">
+                <input
                     className="flex-grow mr-2 py-2 px-4 border border-gray-400 rounded-lg focus:outline-none"
-                    type="text" 
-                    value={message} 
-                    onChange={handleMessageChange} 
-                    placeholder="Type your message here" 
+                    type="text"
+                    value={message}
+                    onChange={handleMessageChange}
+                    placeholder="Type your message here"
                 />
-                <button 
+                <button
                     className="py-2 px-4 bg-blue-500 text-white rounded-lg"
                     onClick={sendMessage}
                 >

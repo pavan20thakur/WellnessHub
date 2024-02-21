@@ -22,12 +22,11 @@ function App() {
       <Route path='/temp' element={<GoogleAuthPage/>} />
       <Route path='/dashboard' element={<Dashboard />} >
         <Route path='home' element={<HomeComponent />}/>
-        <Route path='games' element={<GamesComponent />}/>
+        <Route path='games' element={<EbbAndFlowPage />}/>
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
         <Route path='session' element={<Session />}/>
-        <Route path ='games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
       </Route>
       
       <Route path='*' element={<PageNotFound />} />

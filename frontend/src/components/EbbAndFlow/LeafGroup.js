@@ -216,8 +216,10 @@ const LeafGroup = ({ gameBounds, isPaused, setNumberOfCorrectAnswers, setNumberO
             correctMove === "pointing" ? "bg-green-500 left-0" : "bg-orange-500 left-1/2"
           }`}
         />
-        <div className={`px-6`}>Pointing</div>
-        <div className={`px-6`}>Moving</div>
+        <div className="flex flex-wrap">
+          <div className={`px-6`}>Pointing</div>
+          <div className={`px-6`}>Moving</div>
+        </div>
       </div>
 
       <AnimatePresence>

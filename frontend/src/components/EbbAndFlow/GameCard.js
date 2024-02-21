@@ -53,10 +53,11 @@ const GameCard = () => {
                         <TopGameBoard isPlaying={isPlaying} time={time} numberOfCorrectAnswers={numberOfCorrectAnswers} />
                     )}
                     {/* Game */}
+                    <img alt="bg" src="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" decoding="async" data-nimg="fill" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} sizes="100vw" srcset="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" className="rounded-lg opacity-25 bg-gray-900  bg-gray-900" />
+                    
                     <AnimatePresence>
                         {isPlaying && time > 0 && (
                             <>
-                            <img alt="bg" src="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" decoding="async" data-nimg="fill" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} sizes="100vw" srcset="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" className="rounded-lg opacity-25 bg-gray-900  bg-gray-900" />
                             <LeafGroup
                                 gameBounds={bounds}
                                 isPaused={isPaused}
@@ -71,7 +72,7 @@ const GameCard = () => {
                     
                     {!isPlaying && 
                     <>
-                        <img alt="bg" src="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" decoding="async" data-nimg="fill" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} sizes="100vw" srcset="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" className="rounded-lg bg-gray-900  bg-gray-900" />
+                        <img alt="bg" src="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" decoding="async" data-nimg="fill" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }} sizes="100vw" srcset="https://static.vecteezy.com/system/resources/thumbnails/002/178/674/small/lake-mountain-panorama-landscape-in-green-monochrome-flat-illustration-vector.jpg" className="rounded-lg opacity-50 bg-gray-900  bg-gray-900" />
                         <MenuScreen
                         startPlaying={startPlaying}
                         h1="Ebb and Flow"

@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 import CommunityCard from './CommunityCard';
-<<<<<<< HEAD
 import {
   Input,
   Typography,
   Button
 } from "@material-tailwind/react";
-
-=======
 import { useDynamicTitle } from '../../hooks/useDynamicTitle';
->>>>>>> fcd80cbc57b28bde289d01c5c14baf0cdfbb4eb7
+
 
 function CommunityComponent() {
   useDynamicTitle("Dashboard | Community");

@@ -13,9 +13,15 @@ import { useDynamicTitle } from '../../hooks/useDynamicTitle';
 function CommunityComponent() {
   useDynamicTitle("Dashboard | Community");
   const [search, setSearch] = useState("");
+  const [searchSelected, setSearchSelected] = useState(false);
+
   const [selected, setSelected] = useState(false);
   const [auth, setAuth] = useAuth();
   const [community, setCommunity] = useState(null);
+  const [searchCommunity, setSearchCommunity] = useState(null);
+
+
+
   const [communityName, setCommunityName] = useState("");
   const [desc, setDesc] = useState("")
 
@@ -45,10 +51,11 @@ function CommunityComponent() {
   }, [])
 
   const handleCommunityClick = (id) => {
-      navigate(`${id}`);
+    navigate(`${id}`);
   }
 
   const handleSearch = async () => {
+    setSearchSelected(!searchSelected);
     try {
       const token = auth.token;
       const searchTerm = search // Define your search term here
@@ -63,7 +70,8 @@ function CommunityComponent() {
       });
 
       const data = await response.json();
-      console.log(data);
+      setSearchCommunity(data.communities);
+      console.log(data.communities);
 
     } catch (error) {
       console.log(error.message);
@@ -118,6 +126,18 @@ function CommunityComponent() {
           >
             Search
           </button>
+
+        </div>
+        {/* Community Search Component */}
+        <div
+          className={`${!searchSelected ? "hidden" : "absolute"} w-[400px] h-[400px] p-2 bg-gray-100 left-[330px] top-16 rounded-lg hover:shadow-lg hover:shadow-blue-gray-500/40`}
+        >
+          {searchCommunity && (
+            searchCommunity.map((item, index) => (
+              <CommunityCard key={index} community={item} handleCommunityClick={handleCommunityClick} />
+            ))
+          )
+          }
 
         </div>
 

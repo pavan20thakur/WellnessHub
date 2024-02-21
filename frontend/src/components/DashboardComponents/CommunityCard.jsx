@@ -2,7 +2,7 @@ import React from 'react';
 
 function CommunityCard({ community, handleCommunityClick }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer"
+    <div className="bg-white border rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl  hover:shadow-blue-gray-500/40"
       onClick={() => { 
         handleCommunityClick(community._id)
       }}

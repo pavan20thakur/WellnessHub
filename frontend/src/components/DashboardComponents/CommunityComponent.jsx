@@ -190,7 +190,7 @@ function CommunityComponent() {
         </button>
 
       </div>
-      <div className="h-9/10 bg-gray-300 mt-2">
+      <div className="h-9/10  mt-2 flex flex-col gap-2 p-2">
         {
           community && (
             community.map((item, index) => (

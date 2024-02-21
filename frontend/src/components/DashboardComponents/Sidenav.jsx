@@ -17,7 +17,8 @@ import {
   GameControllerIcon,
   UsersIcon,
   TrophyIcon,
-
+  BeakerIcon,
+  CalendarIcon
 } from "@heroicons/react/24/solid";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
@@ -53,7 +54,7 @@ function Sidenav() {
           selected={selected === 1}
           onClick={() => {
             setSelected(1);
-            navigate("games/ebb-and-flow");
+            navigate("games");
           }}
         >
           <ListItemPrefix>
@@ -69,7 +70,7 @@ function Sidenav() {
           }}
         >
           <ListItemPrefix>
-            <HomeIcon className="h-5 w-5" />
+            <BeakerIcon className="h-5 w-5" />
           </ListItemPrefix>
           Relax
         </ListItem>

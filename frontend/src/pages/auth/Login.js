@@ -13,13 +13,12 @@ import {
   Checkbox,
   Button,
   Typography,
-  Select,
-  Option
 } from "@material-tailwind/react";
+import { useDynamicTitle } from "../../hooks/useDynamicTitle";
 
 
 function Login() {
-
+  useDynamicTitle("Wellness Hub | Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
@@ -55,7 +54,6 @@ function Login() {
 
   return (
     <>
-      <Layout>
         <div className="flex justify-center h-[80vh] items-center">
           <Card color="transparent" shadow={false}>
             <Typography variant="h4" className="text-center" color="blue-gray">
@@ -103,13 +101,12 @@ function Login() {
                 Create an account ?{" "}
                 <span className="font-normal cursor-pointer text-black"
                   onClick={() => {
-                    navigate('/signup')
+                    navigate('/register')
                   }}>Sign Up</span>
               </Typography>
             </form>
           </Card>
         </div>
-      </Layout>
     </>
 
   );

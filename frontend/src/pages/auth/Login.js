@@ -14,10 +14,11 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import { useDynamicTitle } from "../../hooks/useDynamicTitle";
 
 
 function Login() {
-
+  useDynamicTitle("Wellness Hub | Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();

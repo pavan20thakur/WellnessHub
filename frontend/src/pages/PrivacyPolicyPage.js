@@ -1,7 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layouts/Layout';
+import { useDynamicTitle } from '../hooks/useDynamicTitle';
 
 const PrivacyPolicyPage = () => {
+    useDynamicTitle("Wellness Hub | Privacy Policy");
     return (
         <Layout>
             <div className="container mx-auto py-8">

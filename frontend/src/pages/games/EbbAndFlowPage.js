@@ -1,8 +1,8 @@
-import EbbAndFlowCard from "../../components/EbbAndFlow/EbbAndFlowCard";
+import GameCard from "../../components/EbbAndFlow/GameCard";
 
 const EbbAndFlowPage = () => {
   return (
-    <EbbAndFlowCard />
+    <GameCard />
   );
 };
 

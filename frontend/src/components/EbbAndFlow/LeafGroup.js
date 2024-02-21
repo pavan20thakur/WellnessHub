@@ -158,7 +158,7 @@ const LeafGroup = ({ gameBounds, isPaused, setNumberOfCorrectAnswers, setNumberO
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="w-full h-full"
+      className="w-full h-full bg-light-green-50"
     >
       <div
         style={{

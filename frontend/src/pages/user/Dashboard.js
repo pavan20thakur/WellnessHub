@@ -9,8 +9,10 @@ import {
   DashboardHome,
   Questionnaire,
 } from "../../components/DashboardComponents";
+import { useDynamicTitle } from "../../hooks/useDynamicTitle";
 
 const Dashboard = () => {
+  useDynamicTitle("Wellness Hub | Dashboard");
   const navigate = useNavigate();
   const [showQuestionnaire, setShowQuestionnaire] = useState(true);
 

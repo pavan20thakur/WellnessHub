@@ -5,7 +5,7 @@ import Login from './pages/auth/Login';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/user/Dashboard';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import {CommunityComponent, HomeComponent, GamesComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
+import {CommunityComponent, HomeComponent, RelaxActivities, FitnessComponents} from "./components/DashboardComponents"
 import GoogleAuthPage from './pages/GoogleAuthPage';
 import EbbAndFlowPage from './pages/games/EbbAndFlowPage';
 
@@ -20,11 +20,10 @@ function App() {
       <Route path='/temp' element={<GoogleAuthPage/>} />
       <Route path='/dashboard' element={<Dashboard />} >
         <Route path='home' element={<HomeComponent />}/>
-        <Route path='games' element={<GamesComponent />}/>
+        <Route path='games' element={<EbbAndFlowPage />}/>
         <Route path='relax' element={<RelaxActivities />}/>
         <Route path='fitness' element={<FitnessComponents />}/>
         <Route path='community' element={<CommunityComponent />}/>
-        <Route path ='games/ebb-and-flow' element={<EbbAndFlowPage />}></Route>
       </Route>
       
       <Route path='*' element={<PageNotFound />} />

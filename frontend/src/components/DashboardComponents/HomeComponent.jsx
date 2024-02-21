@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { GiRunningShoe, GiFire, GiWaterBottle } from "react-icons/gi";
 import Stopwatch from "./Stopwatch";
 import MeditationHistory from "./MeditationHistory";
+import { useDynamicTitle } from "../../hooks/useDynamicTitle";
 
 const accessToken = "YOUR_ACCESS_TOKEN_HERE";
 
 function HomeComponent() {
+  useDynamicTitle("Dashboard | Home");
   const today = new Date();
   const startTimeMillis = today.setHours(0, 0, 0, 0);
   const endTimeMillis = today.setHours(23, 59, 59, 999);

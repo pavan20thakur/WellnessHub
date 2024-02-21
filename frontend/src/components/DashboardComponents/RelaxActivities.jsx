@@ -12,6 +12,7 @@ import {
 } from "@material-tailwind/react";
 
 import { relaxingActivitiesList } from "../../constants/constants";
+import { useDynamicTitle } from "../../hooks/useDynamicTitle";
 
 const ActivityCard = ({ obj }) => {
   console.log(obj);
@@ -51,6 +52,7 @@ const ActivityCard = ({ obj }) => {
 }
 
 const RelaxActivities = () => {
+  useDynamicTitle("Dashboard | Relax Activities");
 
   return (
     <>
